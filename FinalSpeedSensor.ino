@@ -12,7 +12,6 @@ FirebaseJson json;
 
 int SensorA = 5; 
 int SensorB = 4;  
-int i=1;
 int isObstacle = HIGH;   
 unsigned long startTime;
 unsigned long endTime;
@@ -57,7 +56,7 @@ void loop()
     isObstacle = digitalRead(SensorB);
   if (isObstacle == LOW){
     endTime = millis();
-    delay(200);
+    //delay(200);
    speedfunc(startTime, endTime);
   }
 }
@@ -68,6 +67,5 @@ void speedfunc (long x, long y){
     Serial.print("Speed: ");
     Serial.print(totalSpeed);
     Serial.println("km/h"); 
-    Firebase.setDouble(firebaseData, path + i, totalSpeed);
-    i++;
+    Firebase.setDouble(firebaseData, path, totalSpeed);
 }
